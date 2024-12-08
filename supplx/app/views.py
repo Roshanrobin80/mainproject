@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 import os
 from django.contrib import messages
+from .models import *
 
 
 
@@ -16,7 +17,7 @@ def shop_login(req):
             if data.is_superuser:
                 login(req,data)
                 # req.session['shop']=uname~
-                return redirect(admin_home)
+                return redirect(shop_home)
             else:
                 login(req,data)
                 # req.session['user']=uname
@@ -26,6 +27,11 @@ def shop_login(req):
             return redirect(shop_login)
     else:
         return render(req,'login.html')
+    
+def shop_logout(req):
+    req.session.flush()
+    logout(req)
+    return redirect(shop_login)
     
 def register(req):
         if req.method=='POST':
@@ -47,8 +53,25 @@ def register(req):
 #----------------------admin--------------------------
 
 
-def admin_home(req):
-    return render(req,'admin/admin_home.html')
+def shop_home(req):
+    return render(req,'shop/shop_home.html')
+
+def add_pro(req):
+    # if 'shop' in req.session:
+    if req.method=='POST':
+        id=req.POST['pro_id']
+        name=req.POST['name']
+        price=req.POST['price']
+        offer_price=req.POST['offer_price']
+        des=req.POST['des']
+        img=req.FILES['img']
+        data=Product.objects.create(pro_id=id,name=name,price=price,offer_price=offer_price,des=des,img=img)
+        data.save()
+        return redirect(shop_home)
+    else:
+        return render(req,'shop/add_pro.html')
+    # else:
+    #     return redirect(shop_login)
 
 
 

@@ -18,6 +18,9 @@ urlpatterns=[
 #---------------------user-----------------------
     path('register',views.register),
     path('user_home',views.user_home),
+    path('userprfl',views.userprfl),
+    path('view_pro/<pid>',views.view_pro),
+
 
 
 ]

@@ -82,4 +82,19 @@ def add_pro(req):
 
 
 def user_home(req):
-    return render(req,'user/user_home.html')
+    # if 'user' in req.session:
+        data=Product.objects.all()
+        return render(req,'user/user_home.html',{'data':data})
+    # else:
+    #     return redirect(shop_login)
+    
+def userprfl(req):
+   return render(req,'user/userprfl.html')
+
+def view_pro(req,pid):
+    data=Product.objects.get(pk=pid)
+    return render(req,'user/view_pro.html',{'data':data})
+
+
+
+    # return render(req,'user/user_home.html')

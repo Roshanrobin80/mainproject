@@ -74,6 +74,28 @@ def add_pro(req):
     #     return redirect(shop_login)
 
 
+def edit_product(req,pid):
+    if 'shop' in req.session:
+        if req.method=='POST':
+            id=req.POST['pro_id']
+            name=req.POST['name']
+            price=req.POST['price']
+            offer_price=req.POST['offer_price']
+            des=req.POST['des']
+            img=req.FILES['img']
+            if img:
+                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,dis=des,img=img)
+            else:
+                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,dis=des)
+
+            return redirect(shop_home)
+        else:
+            data=Product.objects.get(pk=pid)
+            return render(req,'shop/edit_pro.html',{'product':data})
+    else:
+        return redirect(shop_login)
+
+
 
 
 

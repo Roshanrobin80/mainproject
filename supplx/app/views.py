@@ -120,3 +120,13 @@ def view_pro(req,pid):
 
 
     # return render(req,'user/user_home.html')
+
+def add_to_cart(req,pid):
+    if 'user' in req.session:
+        prod=Product.objects.get(pk=pid)
+        user=User.objects.get(username=req.session['user'])
+        data=Cart.objects.create(user=user,product=prod)
+        data.save()
+        return redirect(viewcart)
+    else:
+        return redirect(user_home)

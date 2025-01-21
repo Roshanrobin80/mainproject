@@ -14,12 +14,12 @@
 
   <nav class="navbar -xl bg-black navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="javascript:void(0)"><img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="" style="height: 100%; width: 30%;"><br>S u P P L - X</a>
+      <a class="navbar-brand" href="javascript:void(0)"><img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="" style="height: 100%; width: 10%;">S u P P L - X</a>
 
           <div class="sb">
           <form class="d-flex">
             <input class="form-control me-2" type="text" placeholder="Search" style="width:200px;">
-            <button class="d-flex  btn btn-primary " type="button">Search</button>
+            <button class="d-flex  btn btn-secondary " type="button">Search</button>
             <ul>
               <li class="nav-item" >
                 <a class="nav-link" id="i2" href=""><i class="fa-solid fa-cart-shopping" style="color: white;"></i></a>
@@ -32,11 +32,11 @@
           </ul>
 
             <div class="dropdown">
-              <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
                 Sign in
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="shop_login">Login</a></li>
+                <li><a class="dropdown-item" href="shop_login" >Login</a></li>
                 <li><a class="dropdown-item" href="register">Register</a></li>
               </ul>
             </div>
@@ -81,15 +81,15 @@
 
 <div class="container">
   <div class="row">
-      {% for product in data %}
+      {% for data in data %}
       <div class="col-lg-4">
-          <a href="view_pro/{{product.pk}}">
+          <a href="view_pro/{{data.pk}}">
           <div class="card">
-              <img class="card-img-top" src="{{product.img.url}}" alt="Card image"style="width:100%;  height: 400px;" >
+              <img class="card-img-top" src="{{data.img.url}}" alt="Card image"style="width:100%;  height: 400px;" >
               
               <div class="card-body">
-                  <h4 class="card-title">{{product.name}}</h4>
-                  <p class="card-text">{{product.dis}}</p>
+                  <h4 class="card-title">{{data.name}}</h4>
+                  <p class="card-text">{{data.dis}}</p>
                   
               </div>
               

@@ -16,11 +16,11 @@ def shop_login(req):
         if data:
             if data.is_superuser:
                 login(req,data)
-                # req.session['shop']=uname~
+                req.session['shop']=uname
                 return redirect(shop_home)
             else:
                 login(req,data)
-                # req.session['user']=uname
+                req.session['user']=uname
                 return redirect(user_home)
         else:
             messages.warning(req,"Invalid uname or password")
@@ -54,26 +54,32 @@ def register(req):
 
 
 def shop_home(req):
-    return render(req,'shop/shop_home.html')
+    if 'shop' in req.session:
+        product=Product.objects.all()
+        return render(req,'shop/shop_home.html',{'data':product})
+    else:
+        return redirect('shop_login')  # Redirect to the login page if the user is not in the session
+
 
 def add_pro(req):
-    # if 'shop' in req.session:
-    if req.method=='POST':
-        id=req.POST['pro_id']
-        name=req.POST['name']
-        price=req.POST['price']
-        offer_price=req.POST['offer_price']
-        des=req.POST['des']
-        img=req.FILES['img']
-        data=Product.objects.create(pro_id=id,name=name,price=price,offer_price=offer_price,des=des,img=img)
-        data.save()
-        return redirect(shop_home)
+    if 'shop' in req.session:
+        if req.method=='POST':
+            id=req.POST['pro_id']
+            name=req.POST['name']
+            price=req.POST['price']
+            offer_price=req.POST['offer_price']
+            des=req.POST['des']
+            img=req.FILES['img']
+            product=Product.objects.create(pro_id=id,name=name,price=price,offer_price=offer_price,des=des,img=img)
+            product.save()
+            return redirect(shop_home)
+        else:
+            return render(req,'shop/add_pro.html')
     else:
-        return render(req,'shop/add_pro.html')
-    # else:
-    #     return redirect(shop_login)
+        return redirect(shop_login)
 
 
+    
 def edit_product(req,pid):
     if 'shop' in req.session:
         if req.method=='POST':
@@ -84,14 +90,14 @@ def edit_product(req,pid):
             des=req.POST['des']
             img=req.FILES['img']
             if img:
-                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,dis=des,img=img)
+                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,des=des,img=img)
             else:
-                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,dis=des)
+                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,des=des)
 
             return redirect(shop_home)
         else:
-            data=Product.objects.get(pk=pid)
-            return render(req,'shop/edit_pro.html',{'product':data})
+            product=Product.objects.get(pk=pid)
+            return render(req,'shop/edit_pro.html',{'data':product})
     else:
         return redirect(shop_login)
 
@@ -104,18 +110,18 @@ def edit_product(req,pid):
 
 
 def user_home(req):
-    # if 'user' in req.session:
-        data=Product.objects.all()
-        return render(req,'user/user_home.html',{'data':data})
-    # else:
-    #     return redirect(shop_login)
+    if 'user' in req.session:
+        product=Product.objects.all()
+        return render(req,'user/user_home.html',{'data':product})
+    else:
+        return redirect(shop_login)
     
 def userprfl(req):
    return render(req,'user/userprfl.html')
 
 def view_pro(req,pid):
-    data=Product.objects.get(pk=pid)
-    return render(req,'user/view_pro.html',{'data':data})
+    product=Product.objects.get(pk=pid)
+    return render(req,'user/view_pro.html',{'data':product})
 
 
 

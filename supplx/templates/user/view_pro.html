@@ -20,69 +20,39 @@
 </style>    
 <body>
 
-    <nav class="navbar -xl bg-black navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../user_home"><img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="" style="height: 100%; width: 10%;">S u P P L - X</a>
-    
-              <div class="sb">
-              <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search" style="width:200px;">
-                <button class="d-flex  btn btn-secondary " type="button">Search</button>
-                <ul>
-                  <li class="nav-item" >
-                    <a class="nav-link" id="i2" href=""><i class="fa-solid fa-cart-shopping" style="color: white;"></i></a>
-                  </li>
-                </ul>
-                <ul>
-                <li class="nav-item">
-                  <a class="nav-link" class="i1" href=""><i class="fa-solid fa-user" style="color: white;"></i></a>
-                </li>
-              </ul>
-    
-                <div class="dropdown">
-                  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
-                    Sign in
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="shop_login" >Login</a></li>
-                    <li><a class="dropdown-item" href="register">Register</a></li>
-                  </ul>
-                </div>
-              </div>
-              </form>
-            </div>
-    
-        </div>
-      </nav>
-    
-    <nav class="navbar navbar-expand-sm  navbar-light bg-light  ">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mynavbar">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="user_home">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="view_pro">Products</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">CREATINE</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">MASS GAINER</a>
-            </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="shop_logout">LOGOUT</a>
-            </li>
-          </ul>
-    
-        </div>
-        
+  <!-- <...............NAVBAR..................> -->
+
+
+  <nav class="navbar navbar-expand-lg bg-black navbar-dark">
+    <div class="container-fluid">
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="../user_home">
+        <img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="Brand Logo" height="40">S u P P L - X
+      </a>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../user_home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="add_pro">Products </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shop_logout">LOGOUT</a>
+          </li>
+        </ul>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
     <div class="container">
         <div class="row">

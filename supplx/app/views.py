@@ -109,12 +109,10 @@ def edit_product(req,pid):
 
 
 
+    
 def user_home(req):
-    if 'user' in req.session:
-        product=Product.objects.all()
-        return render(req,'user/user_home.html',{'data':product})
-    else:
-        return redirect(shop_login)
+    product=Product.objects.all()
+    return render(req,'user/user_home.html',{'data':product})
     
 def userprfl(req):
    return render(req,'user/userprfl.html')
@@ -125,7 +123,10 @@ def view_pro(req,pid):
 
 
 
-    # return render(req,'user/user_home.html')
+
+def prdt(req):
+    product=Product.objects.all()
+    return render(req,'user/products.html',{'data':product})
 
 def add_to_cart(req,pid):
     if 'user' in req.session:

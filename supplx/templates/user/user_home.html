@@ -12,69 +12,38 @@
 </head>
 <body>
 
-  <nav class="navbar -xl bg-black navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="javascript:void(0)"><img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="" style="height: 100%; width: 10%;">S u P P L - X</a>
+  <!-- <...............NAVBAR..................> -->
 
-          <div class="sb">
-          <form class="d-flex">
-            <input class="form-control me-2" type="text" placeholder="Search" style="width:200px;">
-            <button class="d-flex  btn btn-secondary " type="button">Search</button>
-            <ul>
-              <li class="nav-item" >
-                <a class="nav-link" id="i2" href=""><i class="fa-solid fa-cart-shopping" style="color: white;"></i></a>
-              </li>
-            </ul>
-            <ul>
-            <li class="nav-item">
-              <a class="nav-link" class="i1" href=""><i class="fa-solid fa-user" style="color: white;"></i></a>
-            </li>
-          </ul>
+  <nav class="navbar navbar-expand-lg bg-black navbar-dark">
+    <div class="container-fluid"> 
+      <!-- Brand Logo -->
+      <a class="navbar-brand" href="user_home">
+        <img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="Brand Logo" height="40">S u P P L - X
+      </a>
 
-            <div class="dropdown">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
-                Sign in
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="shop_login" >Login</a></li>
-                <li><a class="dropdown-item" href="register">Register</a></li>
-              </ul>
-            </div>
-          </div>
-          </form>
-        </div>
-
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="prdt">Products </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="shop_logout">Logout</a>
+          </li>
+        </ul>
+        </ul>
+      </div>
     </div>
   </nav>
-
-<nav class="navbar navbar-expand-sm  navbar-light bg-light  ">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mynavbar">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="user_home">HOME</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="view_pro">Products</a>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">CREATINE</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">MASS GAINER</a>
-        </li> -->
-        <li class="nav-item">
-          <a class="nav-link" href="shop_logout">LOGOUT</a>
-        </li>
-      </ul>
-
-    </div>
-    
-  </div>
-</nav>
 
 <div><img src="{% static 'img/b1.webp' %}" style="width: 100%;  " alt=""></div>
 
@@ -152,33 +121,50 @@
         <div class="row">
           <!--Grid column-->
           <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">FOOTER CONTENT</h5>
+            <h5 class="text-uppercase">Supplx </h5>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Molestiae modi cum ipsam ad, illo possimus laborum ut
-              reiciendis obcaecati. Ducimus, quas. Corrupti, pariatur eaque?
-              Reiciendis assumenda iusto sapiente inventore animi?
+              This eCommerce project is designed to provide fitness enthusiasts with easy
+              access to premium gym supplements that support every stage of their fitness
+              journey. 
             </p>
           </div>
           <!--Grid column-->
 
           <!--Grid column-->
           <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
+            <h5 class="text-uppercase">About</h5>
 
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="#!" class="text-white">Link 1</a>
+                <a href="#!" class="text-white">About us</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 2</a>
+                <a href="#!" class="text-white">Privacy policy</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 3</a>
+                <a href="#!" class="text-white">Terms and conditions</a>
+              </li>
+
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Help</h5>
+
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Contact us</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 4</a>
+                <a href="#!" class="text-white">FAQ</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Payments</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Shipping</a>
               </li>
             </ul>
           </div>
@@ -186,64 +172,20 @@
 
           <!--Grid column-->
           <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
+            <h5 class="text-uppercase">costumer support</h5>
 
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="#!" class="text-white">Link 1</a>
+                <a href="#!" class="text-white">Cancellation</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 2</a>
+                <a href="#!" class="text-white">Return policy</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 3</a>
+                <a href="#!" class="text-white">Security</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 4</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
-
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a href="#!" class="text-white">Link 1</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 4</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
-
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a href="#!" class="text-white">Link 1</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 4</a>
-              </li>
-            </ul>
+ 
           </div>
           <!--Grid column-->
         </div>
@@ -256,10 +198,10 @@
       <!-- Section: CTA -->
       <section class="">
         <p class="d-flex justify-content-center align-items-center">
-          <span class="me-3">Register for free</span>
-          <button type="button" class="btn btn-outline-light btn-rounded">
-            Sign up!
-          </button>
+          <span class="me-3" >Register for free</span>
+          <a href="register"><button  type="button" class="btn btn-outline-light btn-rounded">
+            Sign up! 
+          </button></a>
         </p>
       </section>
       <!-- Section: CTA -->
@@ -325,9 +267,9 @@
          class="text-center p-3"
          style="background-color: rgba(0, 0, 0, 0.2)"
          >
-      © 2020 Copyright:
+      © 2025 Copyright:
       <a class="text-white" href="https://mdbootstrap.com/"
-         >MDBootstrap.com</a
+         >supplx.com</a
         >
     </div>
     <!-- Copyright -->
@@ -341,4 +283,3 @@
 </body>
 </html>
 
-<p>PRODUCTS</p>

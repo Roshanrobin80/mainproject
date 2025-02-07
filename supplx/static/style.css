@@ -28,8 +28,31 @@
         /* border-bottom: 2px solid #333; */
     display: inline-block;
     padding-bottom: 10px;
+}
+
+.product-name {
+    text-decoration: none;
+    color: inherit; /* Optional: to inherit the color from the parent element */
+}
+  a:hover, .btn-outline-light:hover {
+    color: black; /* A warm orange color on hover */
+    transition: color 0.3s ease-in-out;
+}
+
+  /* Add some styling for buttons */
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for buttons */
   }
 
-/* #n1{
-    justify-content: center;
-} */
+  .carousel-indicators button {
+    background-color: rgba(255, 255, 255, 0.5); /* Make the dots slightly transparent */
+  }
+
+  .carousel-indicators .active {
+    background-color:white; /* Highlight active dot with a warm color */
+  }
+
+  /* Smooth transition effect for images */
+  .carousel-item {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }

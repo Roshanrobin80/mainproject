@@ -23,21 +23,26 @@
   <!-- <...............NAVBAR..................> -->
 
 
-  <nav class="navbar navbar-expand-lg bg-black navbar-dark">
+  <nav class="navbar navbar-expand-lg bg-black navbar-dark fixed-top">
     <div class="container-fluid">
       <!-- Brand Logo -->
       <a class="navbar-brand" href="../user_home">
-        <img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="Brand Logo" height="40">S u P P L - X
+        <img src="{% static 'img/logo3.jpg' %}" class="rounded-circle" alt="Brand Logo" height="40">S u P P L - X
       </a>
-
+  
+      <!-- Navbar Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
       <!-- Navbar Links -->
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../user_home">Home</a>
+            <a class="nav-link " href="../user_home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="add_pro">Products </a>
+            <a class="nav-link active" href="">Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Services</a>
@@ -46,13 +51,21 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop_logout">LOGOUT</a>
+            <a class="nav-link" href="../shop_logout">Logout</a>
           </li>
         </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="login"><i class="fa-solid fa-user" style="margin-left: 20px;"></i></a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="viewcart"><i class="fa-solid fa-cart-shopping" style="margin-left: 20px;"></i></a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+  <div class="mt-4"></div>
 
     <div class="container">
         <div class="row">

@@ -104,6 +104,15 @@ def edit_product(req,pid):
             return render(req,'shop/edit_pro.html',{'data':product})
     else:
         return redirect(shop_login)
+    
+def delete_product(req,pid):
+    data=Product.objects.get(pk=pid)
+    url=data.img.url
+    og_path=url.split('/')[-1]
+    os.remove('media/'+og_path)
+    data.delete()
+    print(og_path)
+    return redirect(shop_home)
 
 
 
@@ -138,6 +147,16 @@ def add_to_cart(req,pid):
         user=User.objects.get(username=req.session['user'])
         data=Cart.objects.create(user=user,product=prod)
         data.save()
-        return redirect(viewcart)
-    else:
-        return redirect(user_home)
+        return redirect(view_cart)
+    # else:
+    #     return redirect(user_home)
+    
+def view_cart(req):
+    user=User.objects.get(username=req.session['user'])
+    cart_dtls=Cart.objects.filter(user=user)
+    return render(req,'user/cart.html',{'cart_dtls':cart_dtls})
+
+def delete_cart(req,id):
+    cart=Cart.objects.get(pk=id)
+    cart.delete()
+    return redirect(view_cart)

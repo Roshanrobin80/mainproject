@@ -33,7 +33,7 @@
         }
 
         .form-control:focus {
-            border-color: black ;
+            border-color: black;
             box-shadow: black;
         }
 
@@ -55,10 +55,12 @@
         .btn-default {
             background-color: grey;
             border-color: white;
+            color: white;
         }
 
         .btn-default:hover {
             background-color: black;
+            color: white;
         }
 
         .text-right {
@@ -85,7 +87,7 @@
 
     <nav class="navbar navbar-expand-lg bg-black navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="shop_home">
+            <a class="navbar-brand" href="user_home">
                 <img src="{% static 'img/logo3.jpg' %}" class="rounded-circle" alt="Brand Logo" height="40">S u P P L - X
             </a>
 
@@ -96,7 +98,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link " href="user_home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="prdt">Products</a>
@@ -107,9 +109,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="shop_logout">Logout</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -158,7 +160,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="number" class="form-control" value="9999999999">
+                                        <input type="number" class="form-control" value="">
                                     </div>
                                     <div class="text-right mt-3">
                                         <button type="submit" class="btn btn-primary">Save Changes</button>

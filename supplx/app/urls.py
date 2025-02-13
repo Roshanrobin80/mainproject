@@ -13,6 +13,8 @@ urlpatterns=[
     path('shop_home',views.shop_home),
     path('add_pro',views.add_pro),  
     path('edit_product/<pid>',views.edit_product),
+    path('delete_product/<pid>',views.delete_product),
+
 
 
 
@@ -23,6 +25,8 @@ urlpatterns=[
     path('userprfl',views.userprfl),
     path('view_pro/<pid>',views.view_pro),
     path('add_to_cart/<pid>',views.add_to_cart),
+    path('view_cart',views.view_cart),
+    path('delete_cart/<id>',views.delete_cart),
     path('prdt',views.prdt),
     path('user_home',views.user_home),
 

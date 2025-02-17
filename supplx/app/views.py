@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 import os
+from django.core.mail import send_mail
+from django.conf import settings
 from django.contrib import messages
 from .models import *
 
@@ -43,6 +45,7 @@ def register(req):
             email=req.POST['email']
             password=req.POST['password']
             try:
+                send_mail('user registration', "Your account has been successfully created. Thank you for joining us!", settings.EMAIL_HOST_USER, [email])     
                 data=User.objects.create_user(first_name=name,email=email,password=password,username=email)
                 data.save()
                 return redirect(shop_login)

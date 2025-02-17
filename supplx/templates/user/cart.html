@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home</a>
+          <a class="nav-link " href="user_home">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="prdt">Products</a>
@@ -58,25 +58,31 @@
 <h2 class="mt-5 text-center text-dark display-4">Cart</h2>
 <div class="container mt-4">
   <div class="row">
-    {% for i in cart_dtls %}
-    <div class="col-lg-12 mb-4">
-      <div class="row">
-        <div class="col-lg-5">
-          <img src="{{i.product.img.url}}" alt="" style="width: 100%; height: 400px; object-fit: contain;">
-        </div>
-        <div class="col-lg-7">
-          <h2>{{i.product.name}}</h2>
-          <s>
-            <h6>₹{{i.product.price}}</h6>
-          </s>
-          <h3>₹{{i.product.offer_price}}</h3>
-          <p>{{i.product.dis}}</p>
-          <a class="btn btn-danger" href="../delete_cart/{{i.pk}}"><i class="fa-solid fa-trash"></i> Remove</a>
-          <a class="btn btn-primary" href="../user_buy/{{i.pk}}">Buy</a>
+    {% if cart_dtls %}
+      {% for i in cart_dtls %}
+      <div class="col-lg-12 mb-4">
+        <div class="row">
+          <div class="col-lg-5">
+            <img src="{{i.product.img.url}}" alt="" style="width: 100%; height: 400px; object-fit: contain;">
+          </div>
+          <div class="col-lg-7">
+            <h2>{{i.product.name}}</h2>
+            <s>
+              <h6>₹{{i.product.price}}</h6>
+            </s>
+            <h3>₹{{i.product.offer_price}}</h3>
+            <p>{{i.product.dis}}</p>
+            <a class="btn btn-danger" href="../delete_cart/{{i.pk}}"><i class="fa-solid fa-trash"></i> Remove</a>
+            <a class="btn btn-primary" href="../user_buy/{{i.pk}}">Buy</a>
+          </div>
         </div>
       </div>
-    </div>
-    {% endfor %}
+      {% endfor %}
+    {% else %}
+      <div class="col-lg-12 text-center">
+        <h3>Your cart is empty</h3>
+      </div>
+    {% endif %}
   </div>
 </div>
 

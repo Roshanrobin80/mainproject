@@ -29,6 +29,8 @@ urlpatterns=[
     path('delete_cart/<id>',views.delete_cart),
     path('prdt',views.prdt),
     path('user_home',views.user_home),
+    path('contact/', views.contact, name='contact'),
+
 
 
 

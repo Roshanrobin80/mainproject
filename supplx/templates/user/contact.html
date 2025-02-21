@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>supplx shophome</title>
+  <title>Contact Us - Supplx</title>
   {% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
 </head>
 <body>
 
@@ -29,24 +28,23 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
-          <a class="nav-link " href="user_home">Home</a>
+          <a class="nav-link" href="user_home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="prdt">Products</a>
+          <a class="nav-link" href="prdt">Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link active" href="contact">Contact</a>
         </li>
-
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" href="userprfl"><i class="fa-solid fa-user" style="margin-left: 20px;"></i></a>
         </li>
-        <li class="nav-item" >
+        <li class="nav-item">
           <a class="nav-link" href="view_cart"><i class="fa-solid fa-cart-shopping" style="margin-left: 20px;"></i></a>
         </li>
       </ul>
@@ -54,27 +52,35 @@
   </div>
 </nav>
 
-<div>
-
-<p class="products-title">PRODUCTS</p>
-</div>
-
-
-
-<div class="container">
-  <div class="row">
-      {% for data in data %}
-      <div class="col-lg-4">
-          <div class="card">
-              <a href="view_pro/{{data.pk}}" class="product-name">
-                  <img class="card-img-top" src="{{data.img.url}}" alt="Card image" style="width:100%; height: 400px;">
-                  <div class="card-body">
-                      <h4 class="card-title">{{data.name}}</h4>
-                      <p class="card-text">{{data.dis}}</p>
-                  </div>
-              </a>
-          </div>
-      </div>
-      {% endfor %}
+<div class="container mt-5 pt-5">
+  <h2 class="text-center mb-4">Contact Us</h2>
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="subject" class="form-label">Subject</label>
+          <input type="text" class="form-control" id="subject" name="subject" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
+</body>
+</html>

@@ -163,3 +163,24 @@ def delete_cart(req,id):
     cart=Cart.objects.get(pk=id)
     cart.delete()
     return redirect(view_cart)
+
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        # Send email
+        send_mail(
+            subject,
+            message,
+            email,
+            [settings.DEFAULT_FROM_EMAIL],
+            fail_silently=False,
+        )
+
+        messages.success(request, 'Your message has been sent successfully!')
+        return redirect('contact')
+
+    return render(request, 'user/contact.html')

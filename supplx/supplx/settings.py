@@ -134,3 +134,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'roshanrobin741@gmail.com'
 EMAIL_HOST_PASSWORD = 'zukf omrh tkct yaai'
+DEFAULT_FROM_EMAIL = 'roshanrobin741@gmail.com'  # Default from email address
+
+# Message storage
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

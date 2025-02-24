@@ -12,7 +12,7 @@ urlpatterns=[
 # --------------------admin--------------------
     path('shop_home',views.shop_home),
     path('add_pro',views.add_pro),  
-    path('edit_product/<pid>',views.edit_product),
+    path('edit_product/<int:pid>/', views.edit_product, name='edit_product'),
     path('delete_product/<pid>',views.delete_product),
 
 

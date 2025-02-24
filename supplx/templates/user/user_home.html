@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 </head>
+<style>
+  .offr{
+      color: red;
+      text-decoration-line: line-through;
+      text-decoration-color: black;
+  }
+</style> 
 <body>
 
 <nav class="navbar navbar-expand-lg bg-black navbar-dark fixed-top">
@@ -59,7 +66,6 @@
 <p class="products-title">PRODUCTS</p>
 
 
-
 <div class="container">
   <div class="row">
       {% for data in data %}
@@ -69,6 +75,8 @@
                   <img class="card-img-top" src="{{data.img.url}}" alt="Card image" style="width:100%; height: 400px;">
                   <div class="card-body">
                       <h4 class="card-title">{{data.name}}</h4>
+                      <p class="offr">₹{{data.price}}/-</p>
+                      <h4>₹{{data.offer_price}}/-</h4> 
                       <p class="card-text">{{data.dis}}</p>
                   </div>
               </a>

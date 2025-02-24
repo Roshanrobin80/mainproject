@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 import os
@@ -87,26 +87,23 @@ def add_pro(req):
 
 
     
-def edit_product(req,pid):
-    if 'shop' in req.session:
-        if req.method=='POST':
-            id=req.POST['pro_id']
-            name=req.POST['name']
-            price=req.POST['price']
-            offer_price=req.POST['offer_price']
-            des=req.POST['des']
-            img=req.FILES['img']
-            if img:
-                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,des=des,img=img)
-            else:
-                Product.objects.filter(pk=pid).update(pro_id=id,name=name,price=price,offer_price=offer_price,des=des)
+def edit_product(request, pid):
+    product = get_object_or_404(Product, pk=pid)
+    
+    if request.method == 'POST':
+        product.pro_id = request.POST.get('pro_id')
+        product.name = request.POST.get('name')
+        product.price = request.POST.get('price')
+        product.offer_price = request.POST.get('offer_price')
+        product.des = request.POST.get('des')
+        
+        if 'img' in request.FILES:
+            product.img = request.FILES['img']
+        
+        product.save()
+        return redirect(shop_home)  # Redirect to a relevant view after saving
 
-            return redirect(shop_home)
-        else:
-            product=Product.objects.get(pk=pid)
-            return render(req,'shop/edit_pro.html',{'data':product})
-    else:
-        return redirect(shop_login)
+    return render(request, 'shop/edit_pro.html', {'data': product})
     
 def delete_product(req,pid):
     data=Product.objects.get(pk=pid)

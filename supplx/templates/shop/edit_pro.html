@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Product</title>
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg bg-black navbar-dark fixed-top">
         <div class="container-fluid">
           <!-- Brand Logo -->
-          <a class="navbar-brand" href="../shop_home">
+          <a class="navbar-brand" href="shop_home">
             <img src="{% static 'img/logo3.jpg' %}" class="rounded-circle " alt="Brand Logo" height="40">S u P P L - X
           </a>
 
@@ -86,6 +86,11 @@
                 <div class="mb-3">
                     <label for="pwd">Description</label>
                     <input type="text" class="form-control" id="pwd" placeholder="Enter description" name="des" value="{{data.des}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="pwd">Stock</label>
+                    <input type="number" class="form-control" id="pwd" placeholder="Enter stock" name="stock" value="{{data.stock}}">
                 </div>
 
                 <div class="mb-3">

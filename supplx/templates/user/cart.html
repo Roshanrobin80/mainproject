@@ -9,6 +9,22 @@
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  <style>
+    .quantity-control {
+      display: flex;
+      align-items: center;
+    }
+    .quantity-control input {
+      width: 60px;
+      text-align: center;
+    }
+    .quantity-control button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -33,15 +49,13 @@
         <li class="nav-item">
           <a class="nav-link" href="prdt">Products</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="shop_logout">Logout</a>
-        </li>
+        </li> -->
+
       </ul>
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
@@ -72,8 +86,17 @@
             </s>
             <h3>₹{{i.product.offer_price}}/-</h3>
             <p>{{i.product.dis}}</p>
-            <a class="btn btn-danger" href="../delete_cart/{{i.pk}}"><i class="fa-solid fa-trash"></i> Remove</a>
-            <a class="btn btn-primary" href="../user_buy/{{i.pk}}">Buy</a>
+            <p>Stock: {{i.product.stock}}</p> <!-- Display stock information -->
+              {% csrf_token %}
+              <div class="quantity-control mb-3">
+                <button type="button" class="decrement-btn" data-stock="{{i.product.stock}}">-</button>
+                <input type="number" class="form-control" id="quantity" name="quantity" value="{{i.quantity}}" min="1" max="{{i.product.stock}}">
+                <button type="button" class="increment-btn" data-stock="{{i.product.stock}}">+</button>
+              </div>
+              <!-- <button type="submit" class="btn btn-primary">Update Quantity</button> -->
+            </form>
+            <a class="btn btn-danger remove-btn" href="../delete_cart/{{i.pk}}"><i class="fa-solid fa-trash"></i> Remove</a>
+            <a class="btn btn-primary buy-btn" href="../user_buy/{{i.pk}}">Buy</a>
           </div>
         </div>
       </div>
@@ -85,6 +108,152 @@
     {% endif %}
   </div>
 </div>
+
+    <!-- ----------- Footer---------------------->
+
+    <footer class="text-center text-lg-start text-white mt-5" style="background: linear-gradient(45deg, #3e4551, #1c1f25); padding-bottom: 0;">
+      <!-- Grid container -->
+      <div class="container p-4">
+          <!-- Section: Links -->
+          <section class="">
+              <!--Grid row-->
+              <div class="row">
+                  <!--Grid column-->
+                  <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                      <h5 class="text-uppercase font-weight-bold mb-3">Supplx</h5>
+                      <p>
+                          This eCommerce project is designed to provide fitness enthusiasts with easy
+                          access to premium gym supplements that support every stage of their fitness
+                          journey.
+                      </p>
+                  </div>
+                  <!--Grid column-->
+
+                  <!--Grid column-->
+                  <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                      <h5 class="text-uppercase font-weight-bold mb-3">About</h5>
+                      <ul class="list-unstyled mb-0">
+                          <li><a href="#!" class="text-white">About us</a></li>
+                          <li><a href="#!" class="text-white">Privacy policy</a></li>
+                          <li><a href="#!" class="text-white">Terms and conditions</a></li>
+                      </ul>
+                  </div>
+                  <!--Grid column-->
+
+                  <!--Grid column-->
+                  <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                      <h5 class="text-uppercase font-weight-bold mb-3">Help</h5>
+                      <ul class="list-unstyled mb-0">
+                          <li><a href="#!" class="text-white">Contact us</a></li>
+                          <li><a href="#!" class="text-white">FAQ</a></li>
+                          <li><a href="#!" class="text-white">Payments</a></li>
+                          <li><a href="#!" class="text-white">Shipping</a></li>
+                      </ul>
+                  </div>
+                  <!--Grid column-->
+
+                  <!--Grid column-->
+                  <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                      <h5 class="text-uppercase font-weight-bold mb-3">Customer Support</h5>
+                      <ul class="list-unstyled mb-0">
+                          <li><a href="#!" class="text-white">Cancellation</a></li>
+                          <li><a href="#!" class="text-white">Return policy</a></li>
+                          <li><a href="#!" class="text-white">Security</a></li>
+                      </ul>
+                  </div>
+                  <!--Grid column-->
+              </div>
+              <!--Grid row-->
+          </section>
+          <!-- Section: Links -->
+
+          <!-- Section: CTA -->
+          <section class="">
+              <p class="d-flex justify-content-center align-items-center mb-4">
+                  <span class="me-3">Register for free</span>
+                  <a href="register"><button type="button" class="btn btn-outline-light btn-rounded">
+                      Sign up!
+                  </button></a>
+              </p>
+          </section>
+          <!-- Section: CTA -->
+
+          <!-- Section: Social media -->
+          <section class="mb-4 text-center">
+              <!-- Linkedin -->
+              <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/roshan-robin-3bb792348/" role="button">
+                  <i class="fab fa-linkedin-in"></i>
+              </a>
+
+              <!-- Github -->
+              <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Roshanrobin80" role="button">
+                  <i class="fab fa-github"></i>
+              </a>
+          </section>
+          <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+          © 2025 Copyright:
+          <a class="text-white" href="https://mdbootstrap.com/">supplx.com</a>
+      </div>
+      <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const decrementButtons = document.querySelectorAll('.decrement-btn');
+      const incrementButtons = document.querySelectorAll('.increment-btn');
+      const removeButtons = document.querySelectorAll('.remove-btn');
+      const buyButtons = document.querySelectorAll('.buy-btn');
+
+      decrementButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const input = this.nextElementSibling;
+          let value = parseInt(input.value);
+          if (value > 1) {
+            value--;
+            input.value = value;
+          }
+        });
+      });
+
+      incrementButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const input = this.previousElementSibling;
+          const max = parseInt(this.getAttribute('data-stock'));
+          let value = parseInt(input.value);
+          if (value < max) {
+            value++;
+            input.value = value;
+          }
+        });
+      });
+
+      removeButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          const confirmed = confirm('Are you sure you want to remove this item from the cart?');
+          if (confirmed) {
+            window.location.href = this.href;
+          }
+        });
+      });
+
+      buyButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          const confirmed = confirm('Are you sure you want to proceed to buy this item?');
+          if (confirmed) {
+            window.location.href = this.href;
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>

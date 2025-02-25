@@ -65,7 +65,7 @@ def shop_home(req):
         product=Product.objects.all()
         return render(req,'shop/shop_home.html',{'data':product})
     else:
-        return redirect('shop_login')  # Redirect to the login page if the user is not in the session
+        return redirect('shop_login') 
 
 
 def add_pro(req):
@@ -96,12 +96,14 @@ def edit_product(request, pid):
         product.price = request.POST.get('price')
         product.offer_price = request.POST.get('offer_price')
         product.des = request.POST.get('des')
+        product.stock = request.POST.get('stock')  # Handle stock field
+
         
         if 'img' in request.FILES:
             product.img = request.FILES['img']
         
         product.save()
-        return redirect(shop_home)  # Redirect to a relevant view after saving
+        return redirect(shop_home) 
 
     return render(request, 'shop/edit_pro.html', {'data': product})
     
@@ -113,6 +115,7 @@ def delete_product(req,pid):
     data.delete()
     print(og_path)
     return redirect(shop_home)
+
 
 
 
@@ -156,6 +159,18 @@ def view_cart(req):
     cart_dtls=Cart.objects.filter(user=user)
     return render(req,'user/cart.html',{'cart_dtls':cart_dtls})
 
+# def update_cart(request, cart_id):
+#     cart_item = get_object_or_404(Cart, pk=cart_id)
+    
+#     if request.method == 'POST':
+#         quantity = request.POST.get('quantity')
+#         if quantity:
+#             cart_item.quantity = int(quantity)
+#             cart_item.save()
+    
+#     return redirect(view_cart)  # Redirect to the cart view after updating
+
+
 def delete_cart(req,id):
     cart=Cart.objects.get(pk=id)
     cart.delete()
@@ -168,7 +183,6 @@ def contact(request):
         subject = request.POST['subject']
         message = request.POST['message']
 
-        # Send email
         send_mail(
             subject,
             message,
@@ -181,3 +195,21 @@ def contact(request):
         return redirect('contact')
 
     return render(request, 'user/contact.html')
+
+def user_buy1(req,pid):
+    user=User.objects.get(username=req.session['user'])
+    product=Product.objects.get(pk=pid)
+    price=product.offer_price
+    buy=Buy.objects.create(user=user,product=product,price=price)
+    buy.save()
+    return redirect(user_home)
+
+def user_buy(req,cid):
+    user=User.objects.get(username=req.session['user'])
+    cart=Cart.objects.get(pk=cid)
+    product=cart.product
+    price=cart.product.offer_price
+    buy=Buy.objects.create(user=user,product=product,price=price)
+    buy.save()
+    cart.delete()
+    return redirect(view_cart)

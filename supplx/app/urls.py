@@ -26,10 +26,15 @@ urlpatterns=[
     path('view_pro/<pid>',views.view_pro),
     path('add_to_cart/<pid>',views.add_to_cart),
     path('view_cart',views.view_cart),
+    # path('update_cart/<int:cart_id>/', views.update_cart, name='update_cart'),  # Add this line
     path('delete_cart/<id>',views.delete_cart),
     path('prdt',views.prdt),
     path('user_home',views.user_home),
     path('contact/', views.contact, name='contact'),
+    path('user_buy1/<pid>',views.user_buy1),
+    path('user_buy/<cid>',views.user_buy),
+
+
 
 
 
